@@ -1,0 +1,56 @@
+/* В этом файле вы опишете значения переменных в разных цветовых схемах.
+Придерживайтесь такого именования классов:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
+*/
+
+:root.theme-light {
+    --font-main: 'Inter', sans-serif;
+    --font-accent: 'PressStart2P', fantasy;
+    --title-card-weight: 700;
+    --text-card-weight: 400;
+    --bg-color: #fff;
+    --accent-color: #000;
+    --bg-image: repeating-linear-gradient(to right, #d3d3d3 0 2px,transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px,transparent 2px 4px), 
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    --label-stroke: #fff;
+    --button-text-hover-color: #fff;
+    --contour-heart: #000;
+    --fillings-heart: #FF0000;
+  }
+
+:root.theme-dark {
+    --font-main: 'Inter', sans-serif;
+    --font-accent: 'PressStart2P', fantasy;
+    --title-card-weight: 785;
+    --text-card-weight: 465;
+    --bg-color: #000;
+    --accent-color: #00CC14;
+    --bg-image: repeating-linear-gradient(to right, #000 0 2px,transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #000 0 2px,transparent 2px 4px), 
+    linear-gradient(to bottom, #007f0c 0.01%, #004306);
+    --label-stroke: #000;
+    --button-text-hover-color: #00CC14;
+    --contour-heart: #00CC14;
+    --fillings-heart: #FF0000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --font-main: 'Inter', sans-serif;
+        --font-accent: 'PressStart2P', fantasy;
+        --title-card-weight: 785;
+        --text-card-weight: 465;
+        --bg-color: #000;
+        --accent-color: #00CC14;
+        --bg-image: repeating-linear-gradient(to right, #000 0 2px,transparent 2px 4px),
+        repeating-linear-gradient(to bottom, #000 0 2px,transparent 2px 4px), 
+        linear-gradient(to bottom, #007f0c 0.01%, #004306);
+        --label-stroke: #000;
+        --button-text-hover-color: #00CC14;
+        --contour-heart: #00CC14;
+        --fillings-heart: #FF0000;
+    }
+}

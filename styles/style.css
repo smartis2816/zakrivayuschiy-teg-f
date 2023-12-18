@@ -1,0 +1,424 @@
+/* Здесь вы напишете основную часть стилей страницы.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
+
+*/
+
+.page {
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+  font-family: var(--font-main);
+  font-variation-settings: 'wght' var(--text-card-weight);
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  background: var(--bg-image) no-repeat center / cover fixed;
+}
+
+.header {
+  margin: auto;
+  max-inline-size: 700px;
+  min-block-size: 368px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+  margin-block-start: 100px;
+  margin-block-end: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding-block-end: 21px;
+}
+
+.header__logotype {
+  font-family: var(--font-accent);
+  font-size: 65px;
+  font-style:normal;
+  font-weight: var(--text-card-weight);
+  line-height: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-block-end: 20px;
+}
+
+.header__title {
+  font-family: var(--font-accent);
+  font-size: 23px;
+  font-style: normal;
+  font-weight: var(--text-card-weight);
+  line-height: normal;
+  text-transform: uppercase;
+  margin-block-end: 20px;
+}
+
+.theme-menu__list {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.theme-menu__button {
+  padding: 0px;
+  background-color: transparent;
+  border: none; 
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--accent-color);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--text-card-weight);
+  line-height: normal;
+  text-transform: uppercase;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left:  0px;
+  background-color: currentColor;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: '▶';
+  position: absolute;
+  inset-inline-start: -20px;
+  animation: arrow 0.5s infinite alternate ease-in-out;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-block-end: 50px;
+}
+
+.card {
+  max-inline-size: 700px;
+  border: 2px solid var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+}
+
+.card__title {
+  font-variation-settings: 'wght' var(--title-card-weight, 700);
+  font-size: 18px;
+  line-height: normal;
+  padding: 5px 10px;
+}
+
+.card__image-container {
+  margin: 0;
+  padding: 0;
+  border-block-start: 2px solid var(--accent-color);
+  border-block-end: 2px solid var(--accent-color);
+  position: relative;
+}
+
+.card__image-image {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card__image-label {
+  text-transform: uppercase;
+  position: absolute;
+  color: var(--accent-color);
+  font-family: var(--font-accent);
+  font-weight: var(--text-card-weight);
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  opacity: 0.5;
+  inset-block-start: 25px;
+  inset-inline-end: 25px;
+  text-shadow: -1px 0 var(--label-stroke), 0 1px var(--label-stroke), 1px 0 var(--label-stroke), 0 -1px var(--label-stroke);
+  mix-blend-mode: hard-light;
+}
+
+.blur {
+  filter: blur(3px);
+}
+
+.grayscale-invert {
+  filter: grayscale(80%) invert(100%);
+}
+
+.sepia {
+  filter: sepia(0.6);
+}
+
+.hue-rotate{
+  filter: hue-rotate(0.5turn) contrast(150%);
+}
+
+.brightness {
+  filter: brightness(150%) contrast(70%);
+}
+
+.saturate {
+  filter: saturate(300%);
+}
+
+.opacity {
+  filter: opacity(70%);
+}
+
+@supports ((text-stroke: 1px var(--label-stroke)) or
+    (-webkit-text-stroke: 1px var(--label-stroke))) {
+  .card__image-label {
+    -webkit-text-stroke: 1px var(--label-stroke);
+    text-stroke: 1px var(--label-stroke);
+    text-shadow: none;
+  }
+}
+
+.card__text-container {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__text {
+  color: var(--accent-color);
+  font-variation-settings: 'wght' var(--text-card-weight, 400);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 116.667%;
+}
+
+.card__button-container {
+  padding: 0px 25px 25px 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+}
+
+.card__icon-button {
+  padding: 0;
+  height: 34px;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+}
+
+.like-icon {
+  height: 34px;
+}
+
+.button {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--text-card-weight);
+  line-height: 90%;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid var(--accent-color);
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.button__text {
+  position: relative;
+  color: var(--button-text-hover-color);
+  mix-blend-mode: difference;
+}
+
+.button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px var(--accent-color);
+}
+
+.card__like-button {
+  min-width: 130px;
+  min-height: 38px;
+  padding: 9px 17px;
+}
+
+.card__icon-button {
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+}
+
+.keepsake__button {
+  margin-block: 0 100px;
+  margin-inline: auto;
+  min-width: 130px;
+  min-height: 38px;
+  padding: 15px 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.floppy__icon {
+  width: 21px;
+  height: 21px;
+  position: relative;
+  color: var(--button-text-hover-color);
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  max-width: 357px;
+  padding: 31.5px 32.5px;
+}
+
+.dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dialog-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-block-end: 30px;
+}
+
+.dialog-icon {
+  width: 39px;
+  height: 39px;
+}
+
+.dialog__title {
+  max-width: 200px;
+  color: var(--accent-color);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--text-card-weight);
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.close__button {
+  min-width: 100%;
+  text-transform: uppercase;
+  padding: 12.5px 0;
+}
+
+.close__button-text {
+  position: relative;
+  color: var(--button-text-hover-color);
+  mix-blend-mode: difference;
+}
+
+@media (width <= 375px) {
+  .header {
+    max-inline-size: 375px;
+    min-block-size: 326px;
+  }
+  
+  .header__logotype {
+    font-size: 49px;
+  }
+  
+  .header__title {
+    font-size: 14px;
+  }
+
+  .main {
+    gap: 52px;
+  }
+
+  .keepsake__button {
+    flex-direction: column;
+
+  }
+  
+  .floppy__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    max-width: 341px;
+    padding: 32px 42px;
+  }
+
+  .dialog__title {
+    max-width: 198px;
+  }
+}
