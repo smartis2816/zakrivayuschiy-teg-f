@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <title>Закрывающий тег</title>
-    <link rel="icon" href="./images/favicon.ico" sizes="any">
-    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="./images/mobile-icon.png">
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/animations.css" />
     <link rel="stylesheet" href="./styles/themes.css" />
+    <link rel="icon" href="./images/favicon.ico" sizes="any">
+    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/mobile-icon.png">
     <script src="./scripts/set-theme.js"></script>
   </head>
   <body class="page">
     <header class="header">
-      <span class="header__logotype">&lt;/html&gt;</span>
+      <a class="header__logotype">&lt;/html&gt;</a>
       <h1 class="header__title">закрывающий тег</h1>
       <nav class="theme-menu header__theme-menu">
         <!-- Не меняйте разметку этого списка, иначе скрипты перестанут работать -->
@@ -79,7 +79,7 @@
       <article class="card">
         <h2 class="card__title">1 спринт: Я — чистый лист</h2>
         <div class="card__image-container">
-          <img class="card__image-image blur" src="./images/car.png" alt="Изображение фургона" loading="lazy">
+          <img class="card__image-image blur" src="./images/car.png" alt="Фургон стоит рядом с деревом под звёздным небом" loading="lazy">
           <span class="card__image-label">&lt;/html&gt;</span>
         </div>
         <div class="card__text-container">
@@ -296,8 +296,7 @@
             </svg>
             <h2 class="dialog__title">Вставьте дискету, чтобы продолжить</h2>
           </div>
-          <button class="close__button button" type="button"
-          onclick="window['dialog-keepsake'].close();">
+          <button class="close__button button" type="button">
             <span class="close__button-text">Ок</span>
           </button>
         </form>
